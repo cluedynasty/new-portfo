@@ -1,0 +1,172 @@
+/* Hamburger button (hidden on desktop) */
+.nav-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Desktop menu visible */
+#nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+/* Tablet & Phone */
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* Hide menu by default */
+    #nav-menu {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        background: #222;
+        display: none;
+        flex-direction: column;
+        padding: 20px 0;
+        border-left: 2px solid #00ff7f;
+    }
+
+    #nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    #nav-menu ul li {
+        padding: 15px 0;
+        width: 100%;
+    }
+
+    #nav-menu ul li a {
+        width: 100%;
+        display: block;
+        padding: 10px 0;
+    }
+
+    /* When active (JS toggles this class) */
+    #nav-menu.active {
+        display: flex;
+    }
+}
+
+/*  */
+/* GENERAL */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ABOUT SECTION */
+.flex-columns .row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.flex-columns .column {
+  flex: 1;
+}
+
+.image-box img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* SKILLS SECTION */
+.skills .container {
+  display: flex;
+  gap: 2rem;
+}
+
+.technical, .professional {
+  flex: 1;
+}
+
+/* Skill boxes */
+.skill-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 20px;
+}
+
+.skill-box img {
+  width: 45px;
+}
+
+.progress {
+  width: 100%;
+  height: 8px;
+  background: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #00ff4c;
+  width: 0;
+}
+
+.circle-box {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.circle svg {
+  width: 120px;
+  height: 120px;
+}
+
+
+/* 📱 TABLET RESPONSIVE  */
+
+@media (max-width: 992px) {
+  .flex-columns .row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .skills .container {
+    flex-direction: column;
+  }
+
+  .skill-box {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+/* 📱📱 PHONE RESPONSIVE */
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  .circle svg {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill-box img {
+    width: 35px;
+  }
+}
