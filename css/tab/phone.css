@@ -1,63 +1,6 @@
-/* Hamburger button (hidden on desktop) */
-.nav-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: white;
-}
-
-/* Desktop menu visible */
-#nav-menu {
-    display: flex;
-    align-items: center;
-}
-
-/* Tablet & Phone */
-@media (max-width: 768px) {
-
-    /* Show hamburger */
-    .nav-toggle {
-        display: block;
-    }
-
-    /* Hide menu by default */
-    #nav-menu {
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;
-        background: #222;
-        display: none;
-        flex-direction: column;
-        padding: 20px 0;
-        border-left: 2px solid #00ff7f;
-    }
-
-    #nav-menu ul {
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
-
-    #nav-menu ul li {
-        padding: 15px 0;
-        width: 100%;
-    }
-
-    #nav-menu ul li a {
-        width: 100%;
-        display: block;
-        padding: 10px 0;
-    }
-
-    /* When active (JS toggles this class) */
-    #nav-menu.active {
-        display: flex;
-    }
-}
-
-/*  */
-/* GENERAL */
+/* =========================================
+   GENERAL
+   ========================================= */
 * {
   box-sizing: border-box;
 }
@@ -68,7 +11,26 @@ img {
   display: block;
 }
 
-/* ABOUT SECTION */
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+.nav-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
+
+#nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+
+/* =========================================
+   ABOUT SECTION
+   ========================================= */
 .flex-columns .row {
   display: flex;
   align-items: center;
@@ -76,7 +38,9 @@ img {
 }
 
 .flex-columns .column {
-  flex: 1;
+  flex: 1 1 280px;
+  /* allows wrapping/stacking instead of squeezing */
+  min-width: 0;
 }
 
 .image-box img {
@@ -84,17 +48,224 @@ img {
   border-radius: 10px;
 }
 
-/* SKILLS SECTION */
+
+/* =========================================
+   SKILLS SECTION
+   ========================================= */
+.skills .container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.technical,
+.professional {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.skill-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 20px;
+}
+
+.skill-box img {
+  width: 45px;
+  flex-shrink: 0;
+}
+
+.skill-box p {
+  flex-shrink: 0;
+  margin: 0;
+  min-width: 70px;
+}
+
+.progress {
+  flex: 1;
+  height: 8px;
+  background: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #00ff4c;
+  width: 0;
+}
+
+/* Circles — fluid, no breakpoint jumps needed */
+.circle-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+
+.circle-box {
+  text-align: center;
+  margin-bottom: 25px;
+  flex: 0 1 auto;
+}
+
+.circle {
+  position: relative;
+  width: clamp(70px, 20vw, 120px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  display: block;
+}
+
+.circle circle {
+  fill: none;
+  stroke: #00ff77;
+  stroke-width: 8;
+}
+
+.circle span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  font-weight: 600;
+}
+
+.circle-box p {
+  margin-top: 8px;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+}
+
+
+/* =========================================
+   RESPONSIVE — TABLET (≤768px)
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Nav */
+  .nav-toggle {
+    display: block;
+  }
+
+  #nav-menu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: min(200px, 70vw);
+    /* never wider than 70% of viewport */
+    background: #222;
+    display: none;
+    flex-direction: column;
+    padding: 20px 0;
+    border-left: 2px solid #00ff7f;
+  }
+
+  #nav-menu ul {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  #nav-menu ul li {
+    padding: 15px 0;
+    width: 100%;
+  }
+
+  #nav-menu ul li a {
+    width: 100%;
+    display: block;
+    padding: 10px 0;
+  }
+
+  #nav-menu.active {
+    display: flex;
+  }
+
+  /* About section — stack image/text */
+  .flex-columns .row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Skills section — stack technical/professional */
+  .skills .container {
+    flex-direction: column;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE — PHONE (≤600px)
+   ========================================= */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  .skill-box img {
+    width: 35px;
+  }
+
+  .skill-box p {
+    min-width: 60px;
+    font-size: 0.85rem;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE — SMALL PHONES (≤360px)
+   ========================================= */
+@media (max-width: 360px) {
+  .skill-box {
+    gap: 0.6rem;
+  }
+
+  .skill-box img {
+    width: 28px;
+  }
+
+  .skill-box p {
+    min-width: 50px;
+    font-size: 0.8rem;
+  }
+
+  .circle-container {
+    gap: 0.75rem;
+  }
+
+  #nav-menu {
+    width: 85vw;
+    /* nearly full width on tiny screens */
+  }
+}
+
+/* SKILLS SECTION *
 .skills .container {
   display: flex;
   gap: 2rem;
 }
 
-.technical, .professional {
+.technical,
+.professional {
   flex: 1;
 }
 
-/* Skill boxes */
+
+/* Skill boxes *
 .skill-box {
   display: flex;
   align-items: center;
@@ -131,7 +302,7 @@ img {
 }
 
 
-/* 📱 TABLET RESPONSIVE  */
+/* /* 📱 TABLET RESPONSIVE  *
 
 @media (max-width: 992px) {
   .flex-columns .row {
@@ -150,7 +321,7 @@ img {
 }
 
 
-/* 📱📱 PHONE RESPONSIVE */
+/* 📱📱 PHONE RESPONSIVE 
 
 @media (max-width: 600px) {
   h1 {
@@ -169,4 +340,4 @@ img {
   .skill-box img {
     width: 35px;
   }
-}
+} 
